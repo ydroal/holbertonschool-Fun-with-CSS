@@ -1,0 +1,103 @@
+body {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  margin-top: 100px;
+}
+
+#menu-open {
+  display: none; 
+}
+
+.menu {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-items: flex-end;
+  margin: 1rem;
+  width: 6rem;
+  height: 6rem;
+  background-color: #c81838;
+  color: #ffffff;
+  border-radius: 50%;
+  border: 2px solid #9d2741;
+  position: relative;
+  animation: menuExpand 2s ;
+}
+
+.menu-line {
+  
+  background: white;
+  display: block;
+  width: 2rem;
+  height: 3px;
+  /* margin-bottom: 0.2rem; */
+  position: absolute;
+  left: 50%;
+  transform: translateX(-50%);
+
+}
+
+.menu-line-1 {
+  top: calc(50% - 0.5rem - 3px); /* 中央より上に0.5remと自身の高さ（3px） */
+}
+
+.menu-line-2 {
+  top: calc(50% - 1.5px); /* 中央より上に自身の高さの半分（1.5px） */
+}
+
+.menu-line-3 {
+  top: calc(50% + 0.5rem); /* 中央より下に0.5rem */
+}
+
+.menu-item {
+  width: 4rem;
+  height: 4rem;
+  border-radius: 50%;
+  background-color: #c81838;
+  border: 2px solid #9d2741;
+  color: #ffffff;
+  font-size: 1.3rem;
+  justify-content: center;
+  align-items: center;
+  display: flex;
+  margin-bottom: 15px;
+  
+
+  /* opacity: 0; */
+  animation: displayMenu 3s;
+}
+
+@keyframes menuExpand {
+  0%, 100% {
+    width: 6rem;
+    height: 6rem;
+  }
+  25% {
+    width: 8rem;
+    height: 8rem;
+  }
+  50% {
+    width: 6rem;
+    height: 6rem;
+  }
+}
+
+@keyframes createIcon {
+  0%, 100%{
+    background: #c81838;
+    width: 4rem;
+    height: 4rem;
+    border-radius: 50%;
+  }
+}
+
+@keyframes displayMenu {
+  0% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
+  }
+}

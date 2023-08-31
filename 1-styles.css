@@ -1,0 +1,29 @@
+body {
+  font-family: "Times New Roman", serif;
+}
+
+a {
+  color: #a3203b;
+  text-decoration: none;
+  position: relative;
+}
+
+a::after {
+  content: "";
+  width: 0;
+  height: 2px;
+  background-color: #a3203b;
+  position: absolute;
+  bottom: -1px;
+  left: 0;
+  opacity: 0;
+   /* ホバーが解除されたときにフェードアウトさせるための設定 */
+  transition: opacity 0.5s ease-out, width 0.5s ease-out;
+}
+
+a:hover::after {
+  opacity: 1;
+  width: 100%;
+  /* ホバー時にフェードインさせるための設定 */
+  transition: opacity 0.5s ease-out, width 0.5s ease-out; 
+}
