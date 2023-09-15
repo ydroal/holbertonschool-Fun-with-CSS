@@ -12,9 +12,27 @@ body {
 
 .menu {
   display: flex;
-  flex-wrap: wrap;
+  flex-direction: column;
   justify-content: center;
-  align-items: flex-end;
+  align-items: center;
+}
+
+.menu-open:not(:checked) + .menu-open-button:hover {
+	transform: scale(1.25);
+	transition: 350ms;
+}
+
+.menu-open:checked + .menu-open-button {
+	width: 4rem;
+  height: 4rem;
+  border-radius: 50%;
+	transition: 350ms;
+}
+
+.menu-open-button {
+  display: flex;
+  justify-content: center;
+  align-items: center;
   margin: 1rem;
   width: 6rem;
   height: 6rem;
@@ -26,8 +44,9 @@ body {
   animation: menuExpand 2s ;
 }
 
+.menu-open-button
+
 .menu-line {
-  
   background: white;
   display: block;
   width: 2rem;
@@ -36,19 +55,44 @@ body {
   position: absolute;
   left: 50%;
   transform: translateX(-50%);
-
 }
 
 .menu-line-1 {
   top: calc(50% - 0.5rem - 3px); /* 中央より上に0.5remと自身の高さ（3px） */
 }
 
+.menu-open:checked + .menu-open-button .menu-line-1 {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 1.6rem;
+  height: 2.5px;
+	transform: translate(-50%,-50%) rotate(45deg);
+	transition: 200ms;
+}
+
 .menu-line-2 {
   top: calc(50% - 1.5px); /* 中央より上に自身の高さの半分（1.5px） */
 }
 
+.menu-open:checked + .menu-open-button .menu-line-2 {
+	background-color: transparent;
+	border-color: transparent;
+	transition: 200ms;
+}
+
 .menu-line-3 {
   top: calc(50% + 0.5rem); /* 中央より下に0.5rem */
+}
+
+.menu-open:checked + .menu-open-button .menu-line-3 {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 1.6rem;
+  height: 2.5px;
+	transform: translate(-50%,-50%) rotate(-45deg);
+	transition: 200ms;
 }
 
 .menu-item {
@@ -61,43 +105,19 @@ body {
   font-size: 1.3rem;
   justify-content: center;
   align-items: center;
+  
   display: flex;
   margin-bottom: 15px;
-  
-
-  /* opacity: 0; */
-  animation: displayMenu 3s;
+  opacity: 0;
+  transition-delay: 1s;
+  transition: 200ms;
 }
 
-@keyframes menuExpand {
-  0%, 100% {
-    width: 6rem;
-    height: 6rem;
-  }
-  25% {
-    width: 8rem;
-    height: 8rem;
-  }
-  50% {
-    width: 6rem;
-    height: 6rem;
-  }
-}
+.menu-open:checked ~ .menu-item {
+  opacity: 1;
+} 
 
-@keyframes createIcon {
-  0%, 100%{
-    background: #c81838;
-    width: 4rem;
-    height: 4rem;
-    border-radius: 50%;
-  }
-}
-
-@keyframes displayMenu {
-  0% {
-    opacity: 0;
-  }
-  100% {
-    opacity: 1;
-  }
+.menu .menu-item:hover {
+	color: #c81938;
+	background-color: white;
 }
